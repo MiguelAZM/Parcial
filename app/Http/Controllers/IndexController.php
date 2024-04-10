@@ -28,19 +28,12 @@ class IndexController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required',
-            'marca' => 'required',
-            'tipo' => 'required',
-            'descripcion' => 'required',]);
-
-        // Crear el nuevo producto
-        Productos::create([
-            'nombre' => $request->nombre,
-            'marca' => $request->marca,
-            'tipo' => $request->tipo,
-            'descripcion' => $request->descripcion,]);
-
+        $producto=new Productos;
+        $producto->nombre=$request->input('nombre');
+        $producto->marca=$request->input('marca');
+        $producto->tipo=$request->input('tipo');
+        $producto->descripcion=$request->input('descripcion');
+        $producto->save();
         // Redirigir a una página de éxito o a la lista de productos
         return redirect()->route('index')->with('success', 'Producto agregado correctamente');
     }
