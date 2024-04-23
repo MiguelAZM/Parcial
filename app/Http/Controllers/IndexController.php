@@ -49,7 +49,7 @@ class IndexController extends Controller
         $productos = Productos::findOrFail($id);
     
         $request->validate([
-            'nombre' => 'required',
+            'nombre' => 'required', 
             'marca' => 'required',
             'tipo' => 'required',
             'descripcion' => 'required']);
